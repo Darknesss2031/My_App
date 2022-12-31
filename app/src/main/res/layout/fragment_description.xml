@@ -6,20 +6,26 @@
     android:layout_height="match_parent"
     tools:context=".fragments.DescriptionFragment">
 
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_height="match_parent">
 
-        <androidx.viewpager2.widget.ViewPager2
-            android:id="@+id/imageCont"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="350dp" />
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/textDesc"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            <androidx.viewpager2.widget.ViewPager2
+                android:id="@+id/imageCont"
+                android:layout_width="match_parent"
+                android:layout_height="350dp" />
 
-    </LinearLayout>
+            <TextView
+                android:id="@+id/textDesc"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+    </ScrollView>
+
 </FrameLayout>

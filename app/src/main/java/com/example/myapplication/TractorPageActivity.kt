@@ -28,6 +28,10 @@ class TractorPageActivity : AppCompatActivity() {
             Log.d("MyLog", cur.toString())
             specList.add(cur!!)
         }
+        val priceList = intent.getIntegerArrayListExtra("trPrice")!!
+        binding.valueAOP.text = priceList[0].toString()
+        binding.valueARP.text = priceList[1].toString()
+        binding.valueBuildPrice.text = priceList[2].toString()
         launchFragment(DescriptionFragment(imageURL, fullDesc))
         binding.apply {
             navMenuSimp.setOnItemSelectedListener {
