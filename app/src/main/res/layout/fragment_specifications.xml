@@ -9,7 +9,9 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_margin="2dp">
+        android:layout_marginLeft="4dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginRight="4dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -34,9 +36,9 @@
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1sp"
-                tools:ignore="SmallSp"
+                android:layout_marginTop="7dp"
                 android:background="@color/grey"
-                android:layout_marginTop="7dp"/>
+                tools:ignore="SmallSp" />
 
             <TextView
                 android:id="@+id/textTrm"
@@ -57,9 +59,9 @@
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1sp"
-                tools:ignore="SmallSp"
+                android:layout_marginTop="7dp"
                 android:background="@color/grey"
-                android:layout_marginTop="7dp"/>
+                tools:ignore="SmallSp" />
 
             <TextView
                 android:id="@+id/textMove"
@@ -79,9 +81,9 @@
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1sp"
-                tools:ignore="SmallSp"
+                android:layout_marginTop="7dp"
                 android:background="@color/grey"
-                android:layout_marginTop="7dp"/>
+                tools:ignore="SmallSp" />
 
             <TextView
                 android:id="@+id/textSteer"
@@ -101,9 +103,9 @@
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1sp"
-                tools:ignore="SmallSp"
+                android:layout_marginTop="7dp"
                 android:background="@color/grey"
-                android:layout_marginTop="7dp"/>
+                tools:ignore="SmallSp" />
 
             <TextView
                 android:id="@+id/textHydro"
@@ -123,9 +125,9 @@
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1sp"
-                tools:ignore="SmallSp"
+                android:layout_marginTop="7dp"
                 android:background="@color/grey"
-                android:layout_marginTop="7dp"/>
+                tools:ignore="SmallSp" />
 
             <TextView
                 android:id="@+id/textAgr"
@@ -145,9 +147,9 @@
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1sp"
-                tools:ignore="SmallSp"
+                android:layout_marginTop="7dp"
                 android:background="@color/grey"
-                android:layout_marginTop="7dp"/>
+                tools:ignore="SmallSp" />
 
             <TextView
                 android:id="@+id/textElectro"
@@ -167,9 +169,9 @@
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1sp"
-                tools:ignore="SmallSp"
+                android:layout_marginTop="7dp"
                 android:background="@color/grey"
-                android:layout_marginTop="7dp"/>
+                tools:ignore="SmallSp" />
 
             <TextView
                 android:id="@+id/textSize"
@@ -190,9 +192,9 @@
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1sp"
-                tools:ignore="SmallSp"
+                android:layout_marginTop="7dp"
                 android:background="@color/grey"
-                android:layout_marginTop="7dp"/>
+                tools:ignore="SmallSp" />
 
             <TextView
                 android:id="@+id/textFuel"
@@ -213,9 +215,9 @@
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1sp"
-                tools:ignore="SmallSp"
+                android:layout_marginTop="7dp"
                 android:background="@color/grey"
-                android:layout_marginTop="7dp"/>
+                tools:ignore="SmallSp" />
 
             <TextView
                 android:id="@+id/textKit"
