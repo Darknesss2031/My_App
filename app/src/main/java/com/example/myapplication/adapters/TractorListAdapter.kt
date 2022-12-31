@@ -39,7 +39,7 @@ class TractorListAdapter: RecyclerView.Adapter<TractorListAdapter.TractorHolder>
 
     override fun onBindViewHolder(holder: TractorHolder, position: Int) {
         holder.bind(tractorList[position])
-        holder.binding.butOpen.setOnClickListener {
+        holder.binding.butMore.setOnClickListener {
             onClickItem(tractorList[position])
         }
     }

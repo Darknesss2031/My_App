@@ -24,4 +24,5 @@
     <string name="size">Размеры и вес трактора</string>
     <string name="fuel_volume">Объёмы заправочных жидкостей</string>
     <string name="tractor_kit">Комплектация трактора</string>
+    <string name="more">Подробнее</string>
 </resources>
