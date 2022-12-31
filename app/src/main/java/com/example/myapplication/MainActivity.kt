@@ -71,7 +71,7 @@ class MainActivity : AppCompatActivity() {
 
     @SuppressLint("ShowToast")
     private fun getTractorData() {
-        //val url = "https://script.google.com/macros/s/AKfycbxgg70hnvnIiwH-StK6P8U103WCO7VqNAQTU8XgWmZZAFH9ujgsT1UulGw9-EgVKRmKMQ/exec"
+        //val url = "https://script.google.com/macros/s/AKfycbyD-eyUBxx-Pai_3rMB8U1Ynyse7xstQgsK8GXSin6xUD8tRufG5UVa6qJ3BGSb4yJXVA/exec"
         val url = "https://script.google.com/macros/s/AKfycbyD-eyUBxx-Pai_3rMB8U1Ynyse7xstQgsK8GXSin6xUD8tRufG5UVa6qJ3BGSb4yJXVA/exec"
         val queue = Volley.newRequestQueue(this)
         val request = StringRequest(
@@ -112,6 +112,7 @@ class MainActivity : AppCompatActivity() {
             curTractor.model = curMap.getString("Model")
             curTractor.shortDesc = curMap.getString("ShDesc")
             curTractor.fullDesc = curMap.getString("FullDesc")
+            curTractor.availability = Constance.availabilities[curMap.getInt("Availability")]
             val priceList = curMap.getJSONArray("Price")
             for (idx in 0 until priceList.length()) {
                 curTractor.priceList.add(priceList.getInt(idx))
@@ -123,14 +124,6 @@ class MainActivity : AppCompatActivity() {
                     curTractor.spec[i - 1].add(specArray.getString(el))
                 }
             }
-            /*
-            var cnt = 0
-            for (sizeidx in Constance.specSize.indices) {
-                for (idx in 0 until Constance.specSize[sizeidx]) {
-                    curTractor.spec[sizeidx][idx] = curMap.getString("s$cnt")
-                    cnt++
-                }
-            }*/
             tractorDataList.add(curTractor)
         }
     }
@@ -170,57 +163,107 @@ class MainActivity : AppCompatActivity() {
 
         for (counter in 0 until frontDataJSON.length()) {
             val curMap = JSONObject(frontDataJSON.getString(counter))
-            val curFront = Equipment(curMap.getInt("Id"), "A")
-            curFront.imageURL = curMap.getString("ImageURL")
-            curFront.name = curMap.getString("Name")
-            curFront.shortDesc = curMap.getString("ShDesc")
-            curFront.fullDesc = curMap.getString("FullDesc")
-            curFront.price = curMap.getInt("Price")
-            frontDataList.add(curFront)
+            val curEq = Equipment(curMap.getInt("Id"), "A")
+            val imageList = curMap.getJSONArray("ImageURL")
+            for (idx in 0 until imageList.length()) {
+                if (imageList.get(idx) != 0) {
+                    curEq.imageURLList.add(imageList.getString(idx))
+                }
+            }
+            curEq.name = curMap.getString("Name")
+            curEq.shortDesc = curMap.getString("ShDesc")
+            curEq.fullDesc = curMap.getString("FullDesc")
+            val priceList = curMap.getJSONArray("Price")
+            for (idx in 0 until priceList.length()) {
+                curEq.priceList.add(priceList.getInt(idx))
+            }
+            curEq.availability = Constance.availabilities[curMap.getInt("Availability")]
+            curEq.specifications = curMap.getString("Specifications")
+            frontDataList.add(curEq)
         }
 
         for (counter in 0 until pressDataJSON.length()) {
             val curMap = JSONObject(pressDataJSON.getString(counter))
-            val curFront = Equipment(curMap.getInt("Id"), "B")
-            curFront.imageURL = curMap.getString("ImageURL")
-            curFront.name = curMap.getString("Name")
-            curFront.shortDesc = curMap.getString("ShDesc")
-            curFront.fullDesc = curMap.getString("FullDesc")
-            curFront.price = curMap.getInt("Price")
-            pressDataList.add(curFront)
+            val curEq = Equipment(curMap.getInt("Id"), "B")
+            val imageList = curMap.getJSONArray("ImageURL")
+            for (idx in 0 until imageList.length()) {
+                if (imageList.get(idx) != 0) {
+                    curEq.imageURLList.add(imageList.getString(idx))
+                }
+            }
+            curEq.name = curMap.getString("Name")
+            curEq.shortDesc = curMap.getString("ShDesc")
+            curEq.fullDesc = curMap.getString("FullDesc")
+            val priceList = curMap.getJSONArray("Price")
+            for (idx in 0 until priceList.length()) {
+                curEq.priceList.add(priceList.getInt(idx))
+            }
+            curEq.availability = Constance.availabilities[curMap.getInt("Availability")]
+            curEq.specifications = curMap.getString("Specifications")
+            pressDataList.add(curEq)
         }
 
         for (counter in 0 until frezDataJSON.length()) {
             val curMap = JSONObject(frezDataJSON.getString(counter))
-            val curFront = Equipment(curMap.getInt("Id"), "C")
-            curFront.imageURL = curMap.getString("ImageURL")
-            curFront.name = curMap.getString("Name")
-            curFront.shortDesc = curMap.getString("ShDesc")
-            curFront.fullDesc = curMap.getString("FullDesc")
-            curFront.price = curMap.getInt("Price")
-            frezDataList.add(curFront)
+            val curEq = Equipment(curMap.getInt("Id"), "C")
+            val imageList = curMap.getJSONArray("ImageURL")
+            for (idx in 0 until imageList.length()) {
+                if (imageList.get(idx) != 0) {
+                    curEq.imageURLList.add(imageList.getString(idx))
+                }
+            }
+            curEq.name = curMap.getString("Name")
+            curEq.shortDesc = curMap.getString("ShDesc")
+            curEq.fullDesc = curMap.getString("FullDesc")
+            val priceList = curMap.getJSONArray("Price")
+            for (idx in 0 until priceList.length()) {
+                curEq.priceList.add(priceList.getInt(idx))
+            }
+            curEq.availability = Constance.availabilities[curMap.getInt("Availability")]
+            curEq.specifications = curMap.getString("Specifications")
+            frezDataList.add(curEq)
         }
 
         for (counter in 0 until excDataJSON.length()) {
             val curMap = JSONObject(excDataJSON.getString(counter))
-            val curFront = Equipment(curMap.getInt("Id"), "D")
-            curFront.imageURL = curMap.getString("ImageURL")
-            curFront.name = curMap.getString("Name")
-            curFront.shortDesc = curMap.getString("ShDesc")
-            curFront.fullDesc = curMap.getString("FullDesc")
-            curFront.price = curMap.getInt("Price")
-            excDataList.add(curFront)
+            val curEq = Equipment(curMap.getInt("Id"), "D")
+            val imageList = curMap.getJSONArray("ImageURL")
+            for (idx in 0 until imageList.length()) {
+                if (imageList.get(idx) != 0) {
+                    curEq.imageURLList.add(imageList.getString(idx))
+                }
+            }
+            curEq.name = curMap.getString("Name")
+            curEq.shortDesc = curMap.getString("ShDesc")
+            curEq.fullDesc = curMap.getString("FullDesc")
+            val priceList = curMap.getJSONArray("Price")
+            for (idx in 0 until priceList.length()) {
+                curEq.priceList.add(priceList.getInt(idx))
+            }
+            curEq.availability = Constance.availabilities[curMap.getInt("Availability")]
+            curEq.specifications = curMap.getString("Specifications")
+            excDataList.add(curEq)
         }
 
         for (counter in 0 until snowDataJSON.length()) {
             val curMap = JSONObject(snowDataJSON.getString(counter))
-            val curFront = Equipment(curMap.getInt("Id"), "E")
-            curFront.imageURL = curMap.getString("ImageURL")
-            curFront.name = curMap.getString("Name")
-            curFront.shortDesc = curMap.getString("ShDesc")
-            curFront.fullDesc = curMap.getString("FullDesc")
-            curFront.price = curMap.getInt("Price")
-            snowDataList.add(curFront)
+            val curEq = Equipment(curMap.getInt("Id"), "E")
+            val imageList = curMap.getJSONArray("ImageURL")
+            for (idx in 0 until imageList.length()) {
+                if (imageList.get(idx) != 0) {
+                    curEq.imageURLList.add(imageList.getString(idx))
+                }
+            }
+            curEq.name = curMap.getString("Name")
+            curEq.shortDesc = curMap.getString("ShDesc")
+            curEq.fullDesc = curMap.getString("FullDesc")
+            val priceList = curMap.getJSONArray("Price")
+            for (idx in 0 until priceList.length()) {
+                curEq.priceList.add(priceList.getInt(idx))
+            }
+            curEq.availability = Constance.availabilities[curMap.getInt("Availability")]
+            curEq.specifications = curMap.getString("Specifications")
+            snowDataList.add(curEq)
         }
     }
 }

@@ -2,10 +2,12 @@ package com.example.myapplication.adapters
 
 import android.content.Context
 import android.content.Intent
+import android.content.res.ColorStateList
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.example.myapplication.Constance
 import com.example.myapplication.R
 import com.example.myapplication.TractorPageActivity
 import com.example.myapplication.classes.Tractor
@@ -24,6 +26,13 @@ class TractorListAdapter: RecyclerView.Adapter<TractorListAdapter.TractorHolder>
             tractorNameView.text = fullTractorName
             tractorShortDesc.text = tractor.shortDesc
             tractorPriceView.text = tractor.priceList.first().toString()
+            if (tractor.availability == Constance.availabilities.first()) {
+                textAvailabilityR.visibility = View.VISIBLE
+                textAvailabilityR.text = tractor.availability
+            } else {
+                textAvailabilityNR.visibility = View.VISIBLE
+                textAvailabilityNR.text = tractor.availability
+            }
         }
     }
 

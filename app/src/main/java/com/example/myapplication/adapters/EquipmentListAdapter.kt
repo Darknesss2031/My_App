@@ -6,6 +6,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.example.myapplication.Constance
+import com.example.myapplication.EquipmentPageActivity
 import com.example.myapplication.R
 import com.example.myapplication.TractorPageActivity
 import com.example.myapplication.classes.Equipment
@@ -19,10 +21,17 @@ class EquipmentListAdapter: RecyclerView.Adapter<EquipmentListAdapter.EquipmentH
     class EquipmentHolder(item: View): RecyclerView.ViewHolder(item) {
         val binding = SimpleTractorItemBinding.bind(item)
         fun bind (eqItem: Equipment) = with(binding){
-            Picasso.with(itemView.context).load(eqItem.imageURL)
+            Picasso.with(itemView.context).load(eqItem.imageURLList.first()).into(tractorImage)
             tractorNameView.text = eqItem.name
             tractorShortDesc.text = eqItem.shortDesc
-            tractorPriceView.text = eqItem.price.toString()
+            tractorPriceView.text = eqItem.priceList.first().toString()
+            if (eqItem.availability == Constance.availabilities.first()) {
+                textAvailabilityR.visibility = View.VISIBLE
+                textAvailabilityR.text = eqItem.availability
+            } else {
+                textAvailabilityNR.visibility = View.VISIBLE
+                textAvailabilityNR.text = eqItem.availability
+            }
         }
     }
 
@@ -38,7 +47,7 @@ class EquipmentListAdapter: RecyclerView.Adapter<EquipmentListAdapter.EquipmentH
 
     override fun onBindViewHolder(holder: EquipmentHolder, position: Int) {
         holder.bind(equipmentList[position])
-        holder.binding.butOpen.setOnClickListener {
+        holder.binding.butMore.setOnClickListener {
             onClickItem(equipmentList[position])
         }
     }
@@ -48,14 +57,14 @@ class EquipmentListAdapter: RecyclerView.Adapter<EquipmentListAdapter.EquipmentH
     }
 
     private fun onClickItem(item: Equipment) {
-        val intent = Intent(this.context, TractorPageActivity::class.java)
+        val intent = Intent(this.context, EquipmentPageActivity::class.java)
         intent.putExtra("eqId", item.id.toString())
-        intent.putExtra("eqImURL", item.imageURL)
+        intent.putExtra("eqImURL", item.imageURLList)
         intent.putExtra("eqType", item.type)
         intent.putExtra("eqName", item.name)
-        intent.putExtra("eqShDesc", item.shortDesc)
         intent.putExtra("eqFullDesc", item.fullDesc)
-        intent.putExtra("eqPrice", item.price)
+        intent.putExtra("eqPrice", item.priceList)
+        intent.putExtra("eqSpec", item.specifications)
         context.startActivity(intent)
     }
 }

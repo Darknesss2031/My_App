@@ -46,6 +46,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginTop="5dp"
+                    android:nestedScrollingEnabled="false"
+                    android:overScrollMode="never"
                     android:visibility="gone"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -64,6 +66,8 @@
                     android:id="@+id/pressView"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:nestedScrollingEnabled="false"
+                    android:overScrollMode="never"
                     android:visibility="gone" />
 
                 <Button
@@ -78,6 +82,8 @@
                     android:id="@+id/frezView"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:nestedScrollingEnabled="false"
+                    android:overScrollMode="never"
                     android:visibility="gone" />
 
                 <Button
@@ -92,6 +98,8 @@
                     android:id="@+id/excView"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:nestedScrollingEnabled="false"
+                    android:overScrollMode="never"
                     android:visibility="gone" />
 
                 <Button
@@ -108,6 +116,8 @@
                     android:id="@+id/snowView"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:nestedScrollingEnabled="false"
+                    android:overScrollMode="never"
                     android:visibility="gone" />
 
             </LinearLayout>

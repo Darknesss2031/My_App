@@ -6,6 +6,7 @@ data class Tractor(var id: Int) {
     var model = ""
     var shortDesc = ""
     var fullDesc = ""
+    var availability = ""
     var priceList = ArrayList<Int>()
     var spec = arrayListOf<ArrayList<String>>(
         ArrayList(6),

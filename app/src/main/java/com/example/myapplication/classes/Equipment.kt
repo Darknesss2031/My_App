@@ -1,9 +1,11 @@
 package com.example.myapplication.classes
 
 class Equipment (var id: Int, var type: String) {
-    var imageURL = ""
+    var imageURLList = ArrayList<String>()
     var name = ""
     var shortDesc = ""
     var fullDesc = ""
-    var price = 0
+    var priceList = ArrayList<Int>()
+    var availability = ""
+    var specifications = ""
 }
