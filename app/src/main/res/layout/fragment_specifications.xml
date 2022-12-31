@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragments.SpecificationsFragment">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="2dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textEng"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/engine"
+                android:textSize="26sp"
+                android:textStyle="bold" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/engRV"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:nestedScrollingEnabled="false"
+                android:overScrollMode="never" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1sp"
+                tools:ignore="SmallSp"
+                android:background="@color/grey"
+                android:layout_marginTop="7dp"/>
+
+            <TextView
+                android:id="@+id/textTrm"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/transmission"
+                android:textSize="26sp"
+                android:textStyle="bold" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/trmRV"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:nestedScrollingEnabled="false"
+                android:overScrollMode="never" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1sp"
+                tools:ignore="SmallSp"
+                android:background="@color/grey"
+                android:layout_marginTop="7dp"/>
+
+            <TextView
+                android:id="@+id/textMove"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/move_part"
+                android:textSize="26sp"
+                android:textStyle="bold" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/moveRV"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:nestedScrollingEnabled="false"
+                android:overScrollMode="never" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1sp"
+                tools:ignore="SmallSp"
+                android:background="@color/grey"
+                android:layout_marginTop="7dp"/>
+
+            <TextView
+                android:id="@+id/textSteer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/steer"
+                android:textSize="26sp"
+                android:textStyle="bold" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/steerRV"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:nestedScrollingEnabled="false"
+                android:overScrollMode="never" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1sp"
+                tools:ignore="SmallSp"
+                android:background="@color/grey"
+                android:layout_marginTop="7dp"/>
+
+            <TextView
+                android:id="@+id/textHydro"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/hydro_system"
+                android:textSize="26sp"
+                android:textStyle="bold" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/hydroRV"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:nestedScrollingEnabled="false"
+                android:overScrollMode="never" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1sp"
+                tools:ignore="SmallSp"
+                android:background="@color/grey"
+                android:layout_marginTop="7dp"/>
+
+            <TextView
+                android:id="@+id/textAgr"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/agr_system"
+                android:textSize="26sp"
+                android:textStyle="bold" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/agrRV"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:nestedScrollingEnabled="false"
+                android:overScrollMode="never" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1sp"
+                tools:ignore="SmallSp"
+                android:background="@color/grey"
+                android:layout_marginTop="7dp"/>
+
+            <TextView
+                android:id="@+id/textElectro"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/electro_system"
+                android:textSize="26sp"
+                android:textStyle="bold" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/electroRV"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:nestedScrollingEnabled="false"
+                android:overScrollMode="never" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1sp"
+                tools:ignore="SmallSp"
+                android:background="@color/grey"
+                android:layout_marginTop="7dp"/>
+
+            <TextView
+                android:id="@+id/textSize"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/size"
+                android:textSize="26sp"
+                android:textStyle="bold" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/sizeRV"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:nestedScrollingEnabled="false"
+                android:overScrollMode="never"
+                android:scrollbars="none" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1sp"
+                tools:ignore="SmallSp"
+                android:background="@color/grey"
+                android:layout_marginTop="7dp"/>
+
+            <TextView
+                android:id="@+id/textFuel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/fuel_volume"
+                android:textSize="26sp"
+                android:textStyle="bold" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/fuelRV"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:nestedScrollingEnabled="false"
+                android:overScrollMode="never"
+                android:scrollbars="none" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1sp"
+                tools:ignore="SmallSp"
+                android:background="@color/grey"
+                android:layout_marginTop="7dp"/>
+
+            <TextView
+                android:id="@+id/textKit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/tractor_kit"
+                android:textSize="26sp"
+                android:textStyle="bold" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/kitRV"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:nestedScrollingEnabled="false"
+                android:overScrollMode="never"
+                android:scrollbars="none" />
+        </LinearLayout>
+    </ScrollView>
+</FrameLayout>

@@ -1,0 +1,27 @@
+<resources>
+    <string name="app_name">PonyTractor.ru</string>
+    <string name="catalog">Каталог</string>
+    <string name="equipment">Оборудование</string>
+    <string name="geninfo">Информация</string>
+    <string name="search">Поиск…</string>
+    <string name="description">Описание</string>
+    <string name="specifications">Характеристики</string>
+    <string name="extra">Дополнительно</string>
+    <string name="loading">Загрузка, пожалуйста, подождите</string>
+    <string name="chooseeqtype">Навесное оборудование</string>
+    <string name="front">Фронтальные погрузчики</string>
+    <string name="snow">Снегоотвалы</string>
+    <string name="excavator">Экскаваторы</string>
+    <string name="frez">Почвофрезы</string>
+    <string name="press">Пресс-подборщики</string>
+    <string name="engine">Двигатель</string>
+    <string name="transmission">Трансмиссия</string>
+    <string name="move_part">Ходовая часть</string>
+    <string name="steer">Рулевое управление</string>
+    <string name="hydro_system">Гидравлическая система трактора</string>
+    <string name="agr_system">Система агрегатирования</string>
+    <string name="electro_system">Электросистема трактора</string>
+    <string name="size">Размеры и вес трактора</string>
+    <string name="fuel_volume">Объёмы заправочных жидкостей</string>
+    <string name="tractor_kit">Комплектация трактора</string>
+</resources>
