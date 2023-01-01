@@ -24,7 +24,7 @@ class EquipmentListAdapter: RecyclerView.Adapter<EquipmentListAdapter.EquipmentH
             Picasso.with(itemView.context).load(eqItem.imageURLList.first()).into(tractorImage)
             tractorNameView.text = eqItem.name
             tractorShortDesc.text = eqItem.shortDesc
-            tractorPriceView.text = eqItem.priceList.first().toString()
+            tractorPriceView.text = rubbles(eqItem.priceList.first())
             if (eqItem.availability == Constance.availabilities.first()) {
                 textAvailabilityR.visibility = View.VISIBLE
                 textAvailabilityR.text = eqItem.availability
@@ -33,6 +33,18 @@ class EquipmentListAdapter: RecyclerView.Adapter<EquipmentListAdapter.EquipmentH
                 textAvailabilityNR.text = eqItem.availability
             }
         }
+        private fun rubbles(num: Int): String {
+            var total = ""
+            val temp = num.toString()
+            var counter = temp.length
+            while (counter - 3 > 0) {
+                total = temp.substring(counter - 3, counter) + " " + total
+                counter -= 3
+            }
+            total = temp.substring(0, counter) + " " + total
+            return "${total} ₽"
+        }
+
     }
 
     fun setEquipmentList(list: ArrayList<Equipment>) {

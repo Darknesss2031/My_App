@@ -35,7 +35,15 @@ class TractorListAdapter: RecyclerView.Adapter<TractorListAdapter.TractorHolder>
             }
         }
         private fun rubbles(num: Int): String {
-            return "${num}₽"
+            var total = ""
+            val temp = num.toString()
+            var counter = temp.length
+            while (counter - 3 > 0) {
+                total = temp.substring(counter - 3, counter) + " " + total
+                counter -= 3
+            }
+            total = temp.substring(0, counter) + " " + total
+            return "${total} ₽"
         }
 
     }

@@ -91,8 +91,7 @@ object Constance {
                 "Поставка в ноябре",
                 "Поставка в декабре"
         )
-        const val videoDesc: String = "Видеообзор трактора доступен по ссылке: "
-        val mail = "mulendeev_2003@list.ru"
+        const val videoDesc: String = "Видеообзор трактора доступен по ссылке:\n"
         val SNP = "ФИО: "
         val phone = "Телефон: "
 }

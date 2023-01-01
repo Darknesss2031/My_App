@@ -34,8 +34,8 @@ class EquipmentPageActivity : AppCompatActivity() {
         val fullDesc = intent.getStringExtra("eqFullDesc")
         launchFragment(DescriptionFragment(imageURL, fullDesc))
         priceList = intent.getIntegerArrayListExtra("eqPrice")!!
-        binding.valueAOP.text = priceList[0].toString()
-        binding.valueARP.text = priceList[1].toString()
+        binding.valueAOP.text = rubbles(priceList[0])
+        binding.valueARP.text = rubbles(priceList[1])
         val specifications = intent.getStringExtra("eqSpec")!!
         binding.apply {
             butReserveEq.setOnClickListener {
@@ -122,6 +122,15 @@ class EquipmentPageActivity : AppCompatActivity() {
     }
 
     private fun rubbles(num: Int): String {
-        return "${num}₽"
+        var total = ""
+        val temp = num.toString()
+        var counter = temp.length
+        while (counter - 3 > 0) {
+            total = temp.substring(counter - 3, counter) + " " + total
+            counter -= 3
+        }
+        total = temp.substring(0, counter) + " " + total
+        return "${total} ₽"
     }
+
 }
