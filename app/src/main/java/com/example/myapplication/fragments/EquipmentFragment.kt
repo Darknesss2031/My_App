@@ -13,11 +13,13 @@ import com.example.myapplication.adapters.EquipmentListAdapter
 import com.example.myapplication.databinding.FragmentEquipmentBinding
 
 class EquipmentFragment(
-    private val frontList: ArrayList<Equipment>, private val pressList: ArrayList<Equipment>, private val frezList: ArrayList<Equipment>,
+    private val frontList: ArrayList<Equipment>, private val frontExtraList: ArrayList<Equipment>,
+    private val pressList: ArrayList<Equipment>, private val frezList: ArrayList<Equipment>,
     private val excList: ArrayList<Equipment>, private val snowList: ArrayList<Equipment>) : Fragment() {
 
     lateinit var binding: FragmentEquipmentBinding
     private var frontAdapter = EquipmentListAdapter()
+    private var frontExtraAdapter = EquipmentListAdapter()
     private var pressAdapter = EquipmentListAdapter()
     private var frezAdapter = EquipmentListAdapter()
     private var excAdapter = EquipmentListAdapter()
@@ -28,6 +30,7 @@ class EquipmentFragment(
         savedInstanceState: Bundle?
     ): View {
         frontAdapter.setEquipmentList(frontList)
+        frontExtraAdapter.setEquipmentList(frontExtraList)
         pressAdapter.setEquipmentList(pressList)
         frezAdapter.setEquipmentList(frezList)
         excAdapter.setEquipmentList(excList)
@@ -39,6 +42,7 @@ class EquipmentFragment(
 
     private fun init() {
         initRV(frontAdapter, binding.frontView, binding.butFront)
+        initRV(frontExtraAdapter, binding.frontExtra, binding.butFrontExtra)
         initRV(pressAdapter, binding.pressView, binding.butPress)
         initRV(frezAdapter, binding.frezView, binding.butFrez)
         initRV(excAdapter, binding.excView, binding.butExc)

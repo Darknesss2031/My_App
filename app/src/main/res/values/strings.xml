@@ -10,6 +10,7 @@
     <string name="loading">Загрузка, пожалуйста, подождите</string>
     <string name="chooseeqtype">Навесное оборудование</string>
     <string name="front">Фронтальные погрузчики</string>
+    <string name="frontextra">Органы для фронт. погрузчиков</string>
     <string name="snow">Снегоотвалы</string>
     <string name="excavator">Экскаваторы</string>
     <string name="frez">Почвофрезы</string>
@@ -42,4 +43,6 @@
     <string name="about">Ваша информация:</string>
     <string name="reset">Изменить</string>
     <string name="save">Сохранить</string>
+    <string name="amount">Кол-во</string>
+    <string name="reserve">Зарезервировать</string>
 </resources>

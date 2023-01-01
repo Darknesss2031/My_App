@@ -25,7 +25,7 @@ class TractorListAdapter: RecyclerView.Adapter<TractorListAdapter.TractorHolder>
             val fullTractorName = tractor.creatorCorpName + " " + tractor.model
             tractorNameView.text = fullTractorName
             tractorShortDesc.text = tractor.shortDesc
-            tractorPriceView.text = tractor.priceList.first().toString()
+            tractorPriceView.text = rubbles(tractor.priceList.first())
             if (tractor.availability == Constance.availabilities.first()) {
                 textAvailabilityR.visibility = View.VISIBLE
                 textAvailabilityR.text = tractor.availability
@@ -34,6 +34,10 @@ class TractorListAdapter: RecyclerView.Adapter<TractorListAdapter.TractorHolder>
                 textAvailabilityNR.text = tractor.availability
             }
         }
+        private fun rubbles(num: Int): String {
+            return "${num}₽"
+        }
+
     }
 
     fun setTractorList(list: ArrayList<Tractor>) {
@@ -71,7 +75,6 @@ class TractorListAdapter: RecyclerView.Adapter<TractorListAdapter.TractorHolder>
             intent.putExtra("S$i", item.spec[i])
         }
         context.startActivity(intent)
-        
     }
 
 }

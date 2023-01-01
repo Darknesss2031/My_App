@@ -33,6 +33,7 @@ class MainActivity : AppCompatActivity() {
     lateinit var binding: ActivityMainBinding
     private val tractorDataList = arrayListOf<Tractor>()
     private val frontDataList = arrayListOf<Equipment>()
+    private val frontExtraDataList = arrayListOf<Equipment>()
     private val pressDataList = arrayListOf<Equipment>()
     private val frezDataList = arrayListOf<Equipment>()
     private val excDataList = arrayListOf<Equipment>()
@@ -68,7 +69,8 @@ class MainActivity : AppCompatActivity() {
             navMenu.setOnItemSelectedListener {
                 when (it.itemId) {
                     R.id.catalog -> launchFragment(CatalogFragment(tractorDataList))
-                    R.id.shopcart -> launchFragment(EquipmentFragment(frontDataList, pressDataList, frezDataList, excDataList, snowDataList))
+                    R.id.shopcart -> launchFragment(EquipmentFragment(frontDataList, frontExtraDataList,
+                        pressDataList, frezDataList, excDataList, snowDataList))
                     R.id.geninfo -> launchFragment(GeninfoFragment())
                 }
                 true
@@ -166,6 +168,7 @@ class MainActivity : AppCompatActivity() {
     private fun parceEquipmentData(result: String) {
         val eqData = JSONObject(result)
         val frontDataJSON = eqData.getJSONArray("front")
+        val frontExtraDataJSON = eqData.getJSONArray("frontExtra")
         val pressDataJSON = eqData.getJSONArray("press")
         val frezDataJSON = eqData.getJSONArray("frez")
         val excDataJSON = eqData.getJSONArray("exc")
@@ -190,6 +193,27 @@ class MainActivity : AppCompatActivity() {
             curEq.availability = Constance.availabilities[curMap.getInt("Availability")]
             curEq.specifications = curMap.getString("Specifications")
             frontDataList.add(curEq)
+        }
+
+        for (counter in 0 until frontExtraDataJSON.length()) {
+            val curMap = JSONObject(frontExtraDataJSON.getString(counter))
+            val curEq = Equipment(curMap.getInt("Id"), "A")
+            val imageList = curMap.getJSONArray("ImageURL")
+            for (idx in 0 until imageList.length()) {
+                if (imageList.get(idx) != 0) {
+                    curEq.imageURLList.add(imageList.getString(idx))
+                }
+            }
+            curEq.name = curMap.getString("Name")
+            curEq.shortDesc = curMap.getString("ShDesc")
+            curEq.fullDesc = curMap.getString("FullDesc")
+            val priceList = curMap.getJSONArray("Price")
+            for (idx in 0 until priceList.length()) {
+                curEq.priceList.add(priceList.getInt(idx))
+            }
+            curEq.availability = Constance.availabilities[curMap.getInt("Availability")]
+            curEq.specifications = curMap.getString("Specifications")
+            frontExtraDataList.add(curEq)
         }
 
         for (counter in 0 until pressDataJSON.length()) {
@@ -281,4 +305,5 @@ class MainActivity : AppCompatActivity() {
         val intent = Intent(this, GetUserDataActivity::class.java)
         this.startActivity(intent)
     }
+
 }
