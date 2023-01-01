@@ -66,6 +66,7 @@ class TractorListAdapter: RecyclerView.Adapter<TractorListAdapter.TractorHolder>
         intent.putExtra("trShDesc", item.shortDesc)
         intent.putExtra("trFullDesc", item.fullDesc)
         intent.putExtra("trPrice", item.priceList)
+        intent.putExtra("trVideoURL", item.videoUrl)
         for (i in item.spec.indices) {
             intent.putExtra("S$i", item.spec[i])
         }

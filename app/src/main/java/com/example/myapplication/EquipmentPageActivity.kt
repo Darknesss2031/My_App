@@ -12,7 +12,7 @@ import com.example.myapplication.fragments.SpecificationsFragment
 class EquipmentPageActivity : AppCompatActivity() {
     lateinit var binding: ActivityEquipmentPageBinding
     override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
+        super.onCreate(null)
         binding = ActivityEquipmentPageBinding.inflate(layoutInflater)
         setContentView(binding.root)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)

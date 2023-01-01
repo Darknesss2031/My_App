@@ -15,7 +15,7 @@ class TractorPageActivity : AppCompatActivity() {
     private var specList = ArrayList<ArrayList<String>>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
+        super.onCreate(null)
         binding = ActivityTractorPageBinding.inflate(layoutInflater)
         setContentView(binding.root)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
@@ -32,11 +32,12 @@ class TractorPageActivity : AppCompatActivity() {
         binding.valueAOP.text = priceList[0].toString()
         binding.valueARP.text = priceList[1].toString()
         binding.valueBuildPrice.text = priceList[2].toString()
-        launchFragment(DescriptionFragment(imageURL, fullDesc))
+        val videoURL = intent.getStringExtra("trVideoURL")
+        launchFragment(DescriptionFragment(imageURL, fullDesc, videoURL))
         binding.apply {
             navMenuSimp.setOnItemSelectedListener {
                 when (it.itemId) {
-                    R.id.description -> launchFragment(DescriptionFragment(imageURL, fullDesc))
+                    R.id.description -> launchFragment(DescriptionFragment(imageURL, fullDesc, videoURL))
                     R.id.specifications -> launchFragment(SpecificationsFragment(specList))
                 }
                 true

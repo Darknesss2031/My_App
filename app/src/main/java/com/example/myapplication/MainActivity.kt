@@ -34,7 +34,7 @@ class MainActivity : AppCompatActivity() {
 
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
+        super.onCreate(null)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         tractorDataList.clear()
@@ -113,6 +113,7 @@ class MainActivity : AppCompatActivity() {
             curTractor.shortDesc = curMap.getString("ShDesc")
             curTractor.fullDesc = curMap.getString("FullDesc")
             curTractor.availability = Constance.availabilities[curMap.getInt("Availability")]
+            curTractor.videoUrl = curMap.getString("VideoLink")
             val priceList = curMap.getJSONArray("Price")
             for (idx in 0 until priceList.length()) {
                 curTractor.priceList.add(priceList.getInt(idx))

@@ -8,6 +8,7 @@ data class Tractor(var id: Int) {
     var fullDesc = ""
     var availability = ""
     var priceList = ArrayList<Int>()
+    var videoUrl = ""
     var spec = arrayListOf<ArrayList<String>>(
         ArrayList(6),
         ArrayList(10),
