@@ -1,6 +1,9 @@
 package com.example.myapplication
 
 import android.annotation.SuppressLint
+import android.content.Context
+import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Build
 import android.os.Bundle
 import android.os.Looper
@@ -16,12 +19,15 @@ import com.android.volley.toolbox.Volley
 import com.example.myapplication.fragments.CatalogFragment
 import com.example.myapplication.classes.Equipment
 import com.example.myapplication.classes.Tractor
+import com.example.myapplication.classes.UserData
 import com.example.myapplication.databinding.ActivityMainBinding
 import com.example.myapplication.fragments.GeninfoFragment
 import com.example.myapplication.fragments.EquipmentFragment
 import com.example.myapplication.fragments.LoadingFragment
+import org.apache.xmlbeans.impl.xb.xsdschema.Attribute.Use
 import org.json.JSONArray
 import org.json.JSONObject
+import java.io.File
 
 class MainActivity : AppCompatActivity() {
     lateinit var binding: ActivityMainBinding
@@ -31,14 +37,17 @@ class MainActivity : AppCompatActivity() {
     private val frezDataList = arrayListOf<Equipment>()
     private val excDataList = arrayListOf<Equipment>()
     private val snowDataList = arrayListOf<Equipment>()
+    private var UserDataStorage: SharedPreferences? = null
 
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(null)
+        UserDataStorage = getSharedPreferences("UserData", Context.MODE_PRIVATE)
+        UserData.name = UserDataStorage?.getString("name", "null")!!
+        UserData.phoneNumber = UserDataStorage?.getString("phone", "null")!!
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         tractorDataList.clear()
-        frontDataList.clear()
         getTractorData()
         getEquipmentData()
         binding.navMenu.visibility = View.INVISIBLE
@@ -52,6 +61,8 @@ class MainActivity : AppCompatActivity() {
             }
             binding.navMenu.visibility = View.VISIBLE
             launchFragment(CatalogFragment(tractorDataList))
+            Log.d("MyLog", UserData.name)
+            if (UserData.name == "null" || UserData.phoneNumber == "null") { getUserData() }
         }, 3000)
         binding.apply {
             navMenu.setOnItemSelectedListener {
@@ -97,7 +108,6 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun parceTractorData(result: String) {
-        Log.d("MyLog", result)
         val tractorDataJSON = JSONArray(result)
         for (counter in 0 until tractorDataJSON.length()) {
             val curMap = JSONObject(tractorDataJSON.getString(counter))
@@ -120,7 +130,6 @@ class MainActivity : AppCompatActivity() {
             }
             for (i in 1..10) {
                 val specArray = curMap.getJSONArray("S$i")
-                Log.d("MyLog", i.toString())
                 for (el in 0 until specArray.length()) {
                     curTractor.spec[i - 1].add(specArray.getString(el))
                 }
@@ -266,5 +275,10 @@ class MainActivity : AppCompatActivity() {
             curEq.specifications = curMap.getString("Specifications")
             snowDataList.add(curEq)
         }
+    }
+
+    private fun getUserData() {
+        val intent = Intent(this, GetUserDataActivity::class.java)
+        this.startActivity(intent)
     }
 }

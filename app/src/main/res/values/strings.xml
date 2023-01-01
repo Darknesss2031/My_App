@@ -28,4 +28,18 @@
     <string name="arp">РРЦ</string>
     <string name="aop">ОПТ</string>
     <string name="build">Сборка</string>
+    <string name="surname">Фамилия</string>
+    <string name="name">Имя</string>
+    <string name="patronymic">Отчество</string>
+    <string name="phone">Телефон</string>
+    <string name="error">Каждое поле должно быть заполнено!</string>
+    <string name="userdata">Укажите актуальные данные для связи с вами (их в любой момент можно будет изменить в меню информации)</string>
+    <string name="delivery"><a href="http://ponytractor.ru/payment-and-delivery">Оплата и доставка</a></string>
+    <string name="photo"><a href="http://ponytractor.ru/photos">Фотогалерея</a></string>
+    <string name="supplier"><a href="http://ponytractor.ru/nashi-postavschiki">Наши поставщики</a></string>
+    <string name="tender"><a href="http://ponytractor.ru/priglasit-v-tender">Пригласить в тендер</a></string>
+    <string name="contacts"><a href="http://ponytractor.ru/kontakty">Контакты</a></string>
+    <string name="about">Ваша информация:</string>
+    <string name="reset">Изменить</string>
+    <string name="save">Сохранить</string>
 </resources>

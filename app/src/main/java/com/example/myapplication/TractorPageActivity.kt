@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.MenuItem
 import androidx.fragment.app.Fragment
+import com.example.myapplication.classes.UserData
 import com.example.myapplication.databinding.ActivityTractorPageBinding
 import com.example.myapplication.fragments.DescriptionFragment
 import com.example.myapplication.fragments.SpecificationsFragment
@@ -33,6 +34,7 @@ class TractorPageActivity : AppCompatActivity() {
         binding.valueARP.text = priceList[1].toString()
         binding.valueBuildPrice.text = priceList[2].toString()
         val videoURL = intent.getStringExtra("trVideoURL")
+        Log.d("MyLog", UserData.name)
         launchFragment(DescriptionFragment(imageURL, fullDesc, videoURL))
         binding.apply {
             navMenuSimp.setOnItemSelectedListener {
