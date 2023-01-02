@@ -8,14 +8,12 @@ import android.widget.Button
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.myapplication.GlobalList
 import com.example.myapplication.classes.Equipment
 import com.example.myapplication.adapters.EquipmentListAdapter
 import com.example.myapplication.databinding.FragmentEquipmentBinding
 
-class EquipmentFragment(
-    private val frontList: ArrayList<Equipment>, private val frontExtraList: ArrayList<Equipment>,
-    private val pressList: ArrayList<Equipment>, private val frezList: ArrayList<Equipment>,
-    private val excList: ArrayList<Equipment>, private val snowList: ArrayList<Equipment>) : Fragment() {
+class EquipmentFragment : Fragment() {
 
     lateinit var binding: FragmentEquipmentBinding
     private var frontAdapter = EquipmentListAdapter()
@@ -29,12 +27,12 @@ class EquipmentFragment(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        frontAdapter.setEquipmentList(frontList)
-        frontExtraAdapter.setEquipmentList(frontExtraList)
-        pressAdapter.setEquipmentList(pressList)
-        frezAdapter.setEquipmentList(frezList)
-        excAdapter.setEquipmentList(excList)
-        snowAdapter.setEquipmentList(snowList)
+        frontAdapter.setEquipmentList(GlobalList.frontList)
+        frontExtraAdapter.setEquipmentList(GlobalList.frontExtraList)
+        pressAdapter.setEquipmentList(GlobalList.pressList)
+        frezAdapter.setEquipmentList(GlobalList.frezList)
+        excAdapter.setEquipmentList(GlobalList.excList)
+        snowAdapter.setEquipmentList(GlobalList.snowList)
         binding = FragmentEquipmentBinding.inflate(layoutInflater)
         init()
         return binding.root

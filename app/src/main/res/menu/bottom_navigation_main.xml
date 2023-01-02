@@ -7,15 +7,21 @@
         android:orderInCategory="1"
         />
     <item
-        android:id="@+id/shopcart"
+        android:id="@+id/extra"
         android:icon="@drawable/ic_extra"
         android:title="@string/equipment"
         android:orderInCategory="2"
         />
     <item
+        android:id="@+id/shopcart"
+        android:icon="@drawable/ic_shopcart"
+        android:title="@string/shopcart"
+        android:orderInCategory="3"
+        />
+    <item
         android:id="@+id/geninfo"
         android:icon="@drawable/ic_geninfo"
         android:title="@string/geninfo"
-        android:orderInCategory="3"
+        android:orderInCategory="4"
         />
 </menu>

@@ -19,7 +19,7 @@
         android:id="@+id/descFrag"
         android:layout_width="match_parent"
         android:layout_height="fill_parent"
-        android:layout_marginBottom="175dp"
+        android:layout_marginBottom="185dp"
         app:layout_constraintBottom_toTopOf="@+id/navMenuSimp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
@@ -32,19 +32,58 @@
         android:id="@+id/butReserve"
         android:layout_width="0dp"
         android:layout_height="50dp"
+        android:layout_marginEnd="5dp"
         android:text="@string/reserve"
         app:layout_constraintBottom_toTopOf="@+id/navMenuSimp"
+        app:layout_constraintEnd_toStartOf="@+id/butMinus"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/butMinus"
+        android:layout_width="42dp"
+        android:layout_height="0dp"
+        android:text="@string/minus"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/navMenuSimp"
+        app:layout_constraintEnd_toStartOf="@+id/textAmount"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+        tools:ignore="TouchTargetSizeCheck" />
+
+    <Button
+        android:id="@+id/butPlus"
+        android:layout_width="42dp"
+        android:layout_height="0dp"
+        android:text="@string/plus"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/navMenuSimp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/textAmount" />
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
 
     <EditText
         android:id="@+id/textAmount"
         android:layout_width="70dp"
         android:layout_height="50dp"
         android:ems="10"
+        android:gravity="center"
         android:hint="@string/amount"
         android:inputType="number|phone"
         app:layout_constraintBottom_toTopOf="@+id/navMenuSimp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/butPlus" />
+
+    <TextView
+        android:id="@+id/textAlreadyInCart"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:gravity="center"
+        android:text="@string/incart"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@+id/navMenuSimp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
 
@@ -91,7 +130,7 @@
     <LinearLayout
         android:id="@+id/linearLayout"
         android:layout_width="match_parent"
-        android:layout_height="40dp"
+        android:layout_height="50dp"
         android:orientation="horizontal"
         app:layout_constraintBottom_toTopOf="@+id/butReserve"
         app:layout_constraintEnd_toEndOf="parent"
@@ -105,7 +144,7 @@
             android:gravity="center"
             android:text="TextView"
             android:textAlignment="center"
-            android:textColor="?android:attr/textColorHighlight"
+            android:textColor="?attr/colorPrimaryVariant"
             android:textStyle="bold" />
 
         <TextView
@@ -116,7 +155,7 @@
             android:gravity="center"
             android:text="TextView"
             android:textAlignment="center"
-            android:textColor="?android:attr/textColorHighlight"
+            android:textColor="?attr/colorPrimaryVariant"
             android:textStyle="bold" />
 
         <TextView
@@ -127,7 +166,7 @@
             android:gravity="center"
             android:text="TextView"
             android:textAlignment="center"
-            android:textColor="?android:attr/textColorHighlight"
+            android:textColor="?attr/colorPrimaryVariant"
             android:textStyle="bold" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

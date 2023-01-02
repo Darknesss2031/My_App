@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/viewOpen"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
+        android:background="@color/light_grey"
+        app:cardCornerRadius="5dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="5dp"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/tractorImageView"
+                    android:layout_width="160dp"
+                    android:layout_height="120dp"
+                    android:layout_weight="0"
+                    app:srcCompat="@drawable/logo" />
+
+                <TextView
+                    android:id="@+id/textTrName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="4dp"
+                    android:layout_weight="1"
+                    android:gravity="left|center_vertical"
+                    android:text="TextView" />
+
+                <TextView
+                    android:id="@+id/textTrCost"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="right|center_vertical"
+                    android:text="TextView" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1sp"
+                android:layout_marginTop="7dp"
+                android:background="@color/grey"
+                tools:ignore="SmallSp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <CheckBox
+                        android:id="@+id/boxIncludeBuild"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/build" />
+
+                    <TextView
+                        android:id="@+id/buildCostView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="right|center_vertical"
+                        android:text="TextView" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1sp"
+                    android:layout_marginTop="7dp"
+                    android:background="@color/grey"
+                    tools:ignore="SmallSp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/textAmountFull"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="left|center_vertical"
+                        android:text="@string/amountfull"
+                        android:textSize="16sp" />
+
+                    <Button
+                        android:id="@+id/butDec"
+                        android:layout_width="48dp"
+                        android:layout_height="50dp"
+                        android:layout_weight="0"
+                        android:text="@string/minus"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+
+                    <EditText
+                        android:id="@+id/editTextAmount"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_weight="0"
+                        android:ems="10"
+                        android:gravity="center"
+                        android:inputType="phone"
+                        android:text="1" />
+
+                    <Button
+                        android:id="@+id/butInc"
+                        android:layout_width="48dp"
+                        android:layout_height="50dp"
+                        android:layout_weight="0"
+                        android:text="@string/plus"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+</androidx.constraintlayout.widget.ConstraintLayout>

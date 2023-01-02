@@ -6,12 +6,12 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.myapplication.GlobalList
 import com.example.myapplication.classes.Tractor
 import com.example.myapplication.adapters.TractorListAdapter
 import com.example.myapplication.databinding.FragmentCatalogBinding
 
-class CatalogFragment(val trList: ArrayList<Tractor>) : Fragment() {
-
+class CatalogFragment : Fragment() {
     lateinit var binding: FragmentCatalogBinding
     private val rvAdapter = TractorListAdapter()
 
@@ -19,7 +19,7 @@ class CatalogFragment(val trList: ArrayList<Tractor>) : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        rvAdapter.setTractorList(trList)
+        rvAdapter.setTractorList(GlobalList.tractorList)
         binding = FragmentCatalogBinding.inflate(layoutInflater)
         init()
         return binding.root

@@ -15,8 +15,8 @@ import com.example.myapplication.classes.UserData
 import com.example.myapplication.databinding.ActivityEquipmentPageBinding
 import com.example.myapplication.fragments.DescriptionFragment
 import com.example.myapplication.fragments.EquipmentSpecFragment
-import com.example.myapplication.fragments.SpecificationsFragment
 import org.json.JSONObject
+import java.util.Calendar
 
 class EquipmentPageActivity : AppCompatActivity() {
     lateinit var binding: ActivityEquipmentPageBinding
@@ -59,7 +59,7 @@ class EquipmentPageActivity : AppCompatActivity() {
         return super.onOptionsItemSelected(item)
     }
 
-    private fun launchFragment(frag : Fragment) {
+    private fun launchFragment(frag: Fragment) {
         supportFragmentManager.beginTransaction().replace(R.id.descFrag, frag).commit()
     }
 
@@ -70,14 +70,26 @@ class EquipmentPageActivity : AppCompatActivity() {
         if (!isNumber(binding.textAmountEq.text.toString())) {
             displayedText = "Введено неверное количество"
             dialog.setMessage(displayedText)
+            dialog.setNegativeButton("Отмена") { _, i -> }
+            dialog.show()
+            return
+        }  else if (UserData.name == "null" || UserData.phoneNumber == "null") {
+            displayedText = "Заполните информацию для обратной связи во вкладке Информация"
+            dialog.setMessage(displayedText)
             dialog.setNegativeButton("Отмена"){ _, i -> }
             dialog.show()
             return
         }
-        displayedText = "Вы уверены, что хотите зарезервировать\n${curTitle}\nв количестве ${binding.textAmountEq.text} шт.\n" +
-                "стоимостью ${binding.textAmountEq.text.toString().toInt() * priceList[0]}₽?"
+        displayedText =
+            "Вы уверены, что хотите зарезервировать\n${curTitle}\nв количестве ${binding.textAmountEq.text} шт.\n" +
+                    "стоимостью ${
+                        rubbles(
+                            binding.textAmountEq.text.toString().toInt() * priceList[0]
+                        )
+                    }?"
         dialog.setMessage(displayedText)
         dialog.setPositiveButton("Да") { _, i ->
+            val curTime = Calendar.getInstance().time.toString()
             val url =
                 "https://script.google.com/macros/s/AKfycbwyB4P8-2xZ6OqN50B3XFk9iMA8xj9w9PhqxSbw70oRr5oic9gob13yZb4RNqobZWZf/exec"
             val queue = Volley.newRequestQueue(this)
@@ -86,11 +98,16 @@ class EquipmentPageActivity : AppCompatActivity() {
             jsonPost.put("phone", UserData.phoneNumber)
             jsonPost.put("model", curTitle)
             jsonPost.put("amount", binding.textAmountEq.text.toString())
+            jsonPost.put("date", curTime)
             val request = JsonObjectRequest(
                 Request.Method.POST,
                 url,
                 jsonPost,
-                { _ ->
+                {
+                        _ ->
+                },
+                {
+                        result ->
                     run {
                         val text = "Ошибка. Проверьте\nинтернет соединение!"
                         val duration = Toast.LENGTH_SHORT
@@ -101,13 +118,10 @@ class EquipmentPageActivity : AppCompatActivity() {
                         }, 2500)
                     }
                 },
-                {
-                        result ->
-                },
             )
             queue.add(request)
         }
-        dialog.setNegativeButton("Отмена"){ _, i -> }
+        dialog.setNegativeButton("Отмена") { _, i -> }
         dialog.show()
     }
 

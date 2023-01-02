@@ -50,7 +50,6 @@ class SpecificationsFragment(var spec: ArrayList<ArrayList<String>>) : Fragment(
             binding.fuelRV,
             binding.kitRV
         )
-        Log.d("MyLog", spec.toString())
         init()
         return binding.root
     }

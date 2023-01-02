@@ -18,21 +18,30 @@
             <androidx.viewpager2.widget.ViewPager2
                 android:id="@+id/imageCont"
                 android:layout_width="match_parent"
-                android:layout_height="350dp" />
+                android:layout_height="306dp" />
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/hint"
+                android:textColor="@color/clicked"
+                android:textSize="13sp" />
 
             <TextView
                 android:id="@+id/textDesc"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="3dp"
-                android:layout_marginTop="2dp" />
+                android:layout_marginTop="6dp"
+                android:gravity="fill_horizontal" />
 
             <TextView
                 android:id="@+id/textVideoLink"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="3dp"
-                android:layout_marginTop="2dp"
+                android:layout_marginTop="4dp"
                 android:autoLink="web"
                 android:linksClickable="true" />
 

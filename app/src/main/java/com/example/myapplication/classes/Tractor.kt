@@ -9,6 +9,8 @@ data class Tractor(var id: Int) {
     var availability = ""
     var priceList = ArrayList<Int>()
     var videoUrl = ""
+    var isBought = false
+    var buyCount = 1
     var spec = arrayListOf<ArrayList<String>>(
         ArrayList(6),
         ArrayList(10),

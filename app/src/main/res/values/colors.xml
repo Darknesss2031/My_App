@@ -11,4 +11,7 @@
     <color name="grey">#908989</color>
     <color name="ready">#4CAF50</color>
     <color name="notyet">#FF9800</color>
+    <color name="main">#D83232</color>
+    <color name="submain">#FF5722</color>
+    <color name="light_grey">#C6C6C6</color>
 </resources>

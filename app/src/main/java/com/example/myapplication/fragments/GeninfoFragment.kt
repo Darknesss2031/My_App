@@ -43,6 +43,7 @@ class GeninfoFragment : Fragment() {
     private fun onClickReset() {
         val intent = Intent(this.context, GetUserDataActivity::class.java)
         this.startActivity(intent)
+
     }
 
 }

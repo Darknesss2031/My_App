@@ -46,6 +46,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginTop="5dp"
+                    android:backgroundTint="@color/light_grey"
                     android:nestedScrollingEnabled="false"
                     android:overScrollMode="never"
                     android:visibility="gone"
@@ -66,6 +67,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginTop="5dp"
+                    android:backgroundTint="@color/light_grey"
                     android:nestedScrollingEnabled="false"
                     android:overScrollMode="never"
                     android:visibility="gone"
@@ -86,6 +88,7 @@
                     android:id="@+id/pressView"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:backgroundTint="@color/light_grey"
                     android:nestedScrollingEnabled="false"
                     android:overScrollMode="never"
                     android:visibility="gone" />
@@ -102,6 +105,7 @@
                     android:id="@+id/frezView"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:backgroundTint="@color/light_grey"
                     android:nestedScrollingEnabled="false"
                     android:overScrollMode="never"
                     android:visibility="gone" />
@@ -118,6 +122,7 @@
                     android:id="@+id/excView"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:backgroundTint="@color/light_grey"
                     android:nestedScrollingEnabled="false"
                     android:overScrollMode="never"
                     android:visibility="gone" />
@@ -138,7 +143,8 @@
                     android:layout_height="match_parent"
                     android:nestedScrollingEnabled="false"
                     android:overScrollMode="never"
-                    android:visibility="gone" />
+                    android:visibility="gone"
+                    android:backgroundTint="@color/light_grey" />
 
             </LinearLayout>
         </ScrollView>

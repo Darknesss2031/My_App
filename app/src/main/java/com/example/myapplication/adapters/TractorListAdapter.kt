@@ -71,17 +71,7 @@ class TractorListAdapter: RecyclerView.Adapter<TractorListAdapter.TractorHolder>
 
     private fun onClickItem(item: Tractor) {
         val intent = Intent(this.context, TractorPageActivity::class.java)
-        intent.putExtra("trId", item.id.toString())
-        intent.putExtra("trImURL", item.imageURLList)
-        intent.putExtra("trCorpName", item.creatorCorpName)
-        intent.putExtra("trMod", item.model)
-        intent.putExtra("trShDesc", item.shortDesc)
-        intent.putExtra("trFullDesc", item.fullDesc)
-        intent.putExtra("trPrice", item.priceList)
-        intent.putExtra("trVideoURL", item.videoUrl)
-        for (i in item.spec.indices) {
-            intent.putExtra("S$i", item.spec[i])
-        }
+        intent.putExtra("trId", item.id)
         context.startActivity(intent)
     }
 
