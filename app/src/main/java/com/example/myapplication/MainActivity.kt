@@ -38,6 +38,7 @@ class MainActivity : AppCompatActivity() {
         UserDataStorage = getSharedPreferences("UserData", Context.MODE_PRIVATE)
         UserData.name = UserDataStorage?.getString("name", "null")!!
         UserData.phoneNumber = UserDataStorage?.getString("phone", "null")!!
+        UserData.corpName = UserDataStorage?.getString("corpName", "null")!!
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         tractorDataList.clear()
@@ -46,12 +47,6 @@ class MainActivity : AppCompatActivity() {
         binding.navMenu.visibility = View.INVISIBLE
         launchFragment(LoadingFragment())
         android.os.Handler(Looper.getMainLooper()).postDelayed({
-            if (tractorDataList.isEmpty()) {
-                val text = "Слишком медленное\nинтернет соединение!"
-                val duration = Toast.LENGTH_SHORT
-                val toast = Toast.makeText(applicationContext, text, duration)
-                toast.show()
-            }
             binding.navMenu.visibility = View.VISIBLE
             launchFragment(CatalogFragment())
             if (UserData.name == "null" || UserData.phoneNumber == "null") { getUserData() }
@@ -61,7 +56,10 @@ class MainActivity : AppCompatActivity() {
                 when (it.itemId) {
                     R.id.catalog -> launchFragment(CatalogFragment())
                     R.id.extra -> launchFragment(EquipmentFragment())
-                    R.id.shopcart -> launchFragment(ShopcartFragment())
+                    R.id.shopcart -> {
+                        launchFragment(ShopcartFragment())
+                        supportFragmentManager.beginTransaction().replace(R.id.rvHolder, ShopcartViewFragment()).commit()
+                    }
                     R.id.geninfo -> launchFragment(GeninfoFragment())
                 }
                 true
@@ -167,7 +165,7 @@ class MainActivity : AppCompatActivity() {
 
         for (counter in 0 until frontDataJSON.length()) {
             val curMap = JSONObject(frontDataJSON.getString(counter))
-            val curEq = Equipment(curMap.getInt("Id"), "A")
+            val curEq = Equipment(curMap.getInt("Id"), 0)
             val imageList = curMap.getJSONArray("ImageURL")
             for (idx in 0 until imageList.length()) {
                 if (imageList.get(idx) != 0) {
@@ -183,12 +181,12 @@ class MainActivity : AppCompatActivity() {
             }
             curEq.availability = Constance.availabilities[curMap.getInt("Availability")]
             curEq.specifications = curMap.getString("Specifications")
-            GlobalList.frontList.add(curEq)
+            GlobalList.extraList[0].add(curEq)
         }
 
         for (counter in 0 until frontExtraDataJSON.length()) {
             val curMap = JSONObject(frontExtraDataJSON.getString(counter))
-            val curEq = Equipment(curMap.getInt("Id"), "B")
+            val curEq = Equipment(curMap.getInt("Id"), 1)
             val imageList = curMap.getJSONArray("ImageURL")
             for (idx in 0 until imageList.length()) {
                 if (imageList.get(idx) != 0) {
@@ -204,12 +202,12 @@ class MainActivity : AppCompatActivity() {
             }
             curEq.availability = Constance.availabilities[curMap.getInt("Availability")]
             curEq.specifications = curMap.getString("Specifications")
-            GlobalList.frontExtraList.add(curEq)
+            GlobalList.extraList[1].add(curEq)
         }
 
         for (counter in 0 until pressDataJSON.length()) {
             val curMap = JSONObject(pressDataJSON.getString(counter))
-            val curEq = Equipment(curMap.getInt("Id"), "C")
+            val curEq = Equipment(curMap.getInt("Id"), 2)
             val imageList = curMap.getJSONArray("ImageURL")
             for (idx in 0 until imageList.length()) {
                 if (imageList.get(idx) != 0) {
@@ -225,12 +223,12 @@ class MainActivity : AppCompatActivity() {
             }
             curEq.availability = Constance.availabilities[curMap.getInt("Availability")]
             curEq.specifications = curMap.getString("Specifications")
-            GlobalList.pressList.add(curEq)
+            GlobalList.extraList[2].add(curEq)
         }
 
         for (counter in 0 until frezDataJSON.length()) {
             val curMap = JSONObject(frezDataJSON.getString(counter))
-            val curEq = Equipment(curMap.getInt("Id"), "C")
+            val curEq = Equipment(curMap.getInt("Id"), 3)
             val imageList = curMap.getJSONArray("ImageURL")
             for (idx in 0 until imageList.length()) {
                 if (imageList.get(idx) != 0) {
@@ -246,12 +244,12 @@ class MainActivity : AppCompatActivity() {
             }
             curEq.availability = Constance.availabilities[curMap.getInt("Availability")]
             curEq.specifications = curMap.getString("Specifications")
-            GlobalList.frezList.add(curEq)
+            GlobalList.extraList[3].add(curEq)
         }
 
         for (counter in 0 until excDataJSON.length()) {
             val curMap = JSONObject(excDataJSON.getString(counter))
-            val curEq = Equipment(curMap.getInt("Id"), "D")
+            val curEq = Equipment(curMap.getInt("Id"), 4)
             val imageList = curMap.getJSONArray("ImageURL")
             for (idx in 0 until imageList.length()) {
                 if (imageList.get(idx) != 0) {
@@ -267,12 +265,12 @@ class MainActivity : AppCompatActivity() {
             }
             curEq.availability = Constance.availabilities[curMap.getInt("Availability")]
             curEq.specifications = curMap.getString("Specifications")
-            GlobalList.excList.add(curEq)
+            GlobalList.extraList[4].add(curEq)
         }
 
         for (counter in 0 until snowDataJSON.length()) {
             val curMap = JSONObject(snowDataJSON.getString(counter))
-            val curEq = Equipment(curMap.getInt("Id"), "E")
+            val curEq = Equipment(curMap.getInt("Id"), 5)
             val imageList = curMap.getJSONArray("ImageURL")
             for (idx in 0 until imageList.length()) {
                 if (imageList.get(idx) != 0) {
@@ -288,7 +286,7 @@ class MainActivity : AppCompatActivity() {
             }
             curEq.availability = Constance.availabilities[curMap.getInt("Availability")]
             curEq.specifications = curMap.getString("Specifications")
-            GlobalList.snowList.add(curEq)
+            GlobalList.extraList[5].add(curEq)
         }
     }
 

@@ -10,7 +10,7 @@
         android:id="@+id/fieldSurname"
         android:layout_width="wrap_content"
         android:layout_height="55dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="20dp"
         android:ems="10"
         android:hint="@string/surname"
         android:inputType="textPersonName"
@@ -24,7 +24,7 @@
         android:id="@+id/fieldName"
         android:layout_width="wrap_content"
         android:layout_height="55dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="20dp"
         android:ems="10"
         android:hint="@string/name"
         android:inputType="textPersonName"
@@ -36,7 +36,7 @@
         android:id="@+id/fieldPatronymic"
         android:layout_width="wrap_content"
         android:layout_height="55dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="20dp"
         android:ems="10"
         android:hint="@string/patronymic"
         android:inputType="textPersonName"
@@ -48,13 +48,13 @@
         android:id="@+id/fieldPhone"
         android:layout_width="wrap_content"
         android:layout_height="55dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="20dp"
         android:ems="10"
         android:hint="@string/phone"
         android:inputType="phone"
         app:layout_constraintEnd_toEndOf="@+id/fieldPatronymic"
         app:layout_constraintStart_toStartOf="@+id/fieldPatronymic"
-        app:layout_constraintTop_toBottomOf="@+id/fieldPatronymic" />
+        app:layout_constraintTop_toBottomOf="@+id/fieldCorpName" />
 
     <Button
         android:id="@+id/butSave"
@@ -92,4 +92,17 @@
         app:layout_constraintHorizontal_bias="0.842"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/fieldCorpName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:ems="10"
+        android:hint="@string/corpname"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="@+id/fieldPatronymic"
+        app:layout_constraintHorizontal_bias="0.504"
+        app:layout_constraintStart_toStartOf="@+id/fieldPatronymic"
+        app:layout_constraintTop_toBottomOf="@+id/fieldPatronymic" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -94,4 +94,7 @@ object Constance {
         const val videoDesc: String = "Видеообзор трактора доступен по ссылке:\n"
         val SNP = "ФИО: "
         val phone = "Телефон: "
+        val separator = "|"
+        val withBuild = "со сборкой"
+        val withoutBuild = "без сборки"
 }

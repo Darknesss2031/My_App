@@ -35,6 +35,7 @@ class GeninfoFragment : Fragment() {
             textSNP.text = userName
             val phoneNum = Constance.phone + UserData.phoneNumber
             textPhone.text = phoneNum
+            textCorpName.text = UserData.corpName
             butReset.setOnClickListener{ onClickReset() }
         }
         return binding.root

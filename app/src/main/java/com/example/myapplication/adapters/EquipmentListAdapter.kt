@@ -70,13 +70,8 @@ class EquipmentListAdapter: RecyclerView.Adapter<EquipmentListAdapter.EquipmentH
 
     private fun onClickItem(item: Equipment) {
         val intent = Intent(this.context, EquipmentPageActivity::class.java)
-        intent.putExtra("eqId", item.id.toString())
-        intent.putExtra("eqImURL", item.imageURLList)
+        intent.putExtra("eqId", item.id)
         intent.putExtra("eqType", item.type)
-        intent.putExtra("eqName", item.name)
-        intent.putExtra("eqFullDesc", item.fullDesc)
-        intent.putExtra("eqPrice", item.priceList)
-        intent.putExtra("eqSpec", item.specifications)
         context.startActivity(intent)
     }
 }

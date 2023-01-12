@@ -109,7 +109,7 @@
 
                     <Button
                         android:id="@+id/butDec"
-                        android:layout_width="48dp"
+                        android:layout_width="45dp"
                         android:layout_height="50dp"
                         android:layout_weight="0"
                         android:text="@string/minus"
@@ -128,7 +128,7 @@
 
                     <Button
                         android:id="@+id/butInc"
-                        android:layout_width="48dp"
+                        android:layout_width="45dp"
                         android:layout_height="50dp"
                         android:layout_weight="0"
                         android:text="@string/plus"

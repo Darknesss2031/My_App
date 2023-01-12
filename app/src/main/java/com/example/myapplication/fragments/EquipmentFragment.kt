@@ -27,12 +27,12 @@ class EquipmentFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        frontAdapter.setEquipmentList(GlobalList.frontList)
-        frontExtraAdapter.setEquipmentList(GlobalList.frontExtraList)
-        pressAdapter.setEquipmentList(GlobalList.pressList)
-        frezAdapter.setEquipmentList(GlobalList.frezList)
-        excAdapter.setEquipmentList(GlobalList.excList)
-        snowAdapter.setEquipmentList(GlobalList.snowList)
+        frontAdapter.setEquipmentList(GlobalList.extraList[0])
+        frontExtraAdapter.setEquipmentList(GlobalList.extraList[1])
+        pressAdapter.setEquipmentList(GlobalList.extraList[2])
+        frezAdapter.setEquipmentList(GlobalList.extraList[3])
+        excAdapter.setEquipmentList(GlobalList.extraList[4])
+        snowAdapter.setEquipmentList(GlobalList.extraList[5])
         binding = FragmentEquipmentBinding.inflate(layoutInflater)
         init()
         return binding.root

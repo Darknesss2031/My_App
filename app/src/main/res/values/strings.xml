@@ -51,4 +51,10 @@
     <string name="plus">+</string>
     <string name="minus">-</string>
     <string name="incart">Товар уже в корзине</string>
+    <string name="addtocart">Добавить в корзину</string>
+    <string name="total">Итого:</string>
+    <string name="tractors">Тракторы</string>
+    <string name="corpname">Название компании</string>
+    <string name="comm">Комментарий</string>
+    <string name="extracomm">Если у вас есть дополнительные пожелания, можете указать их здесь</string>
 </resources>

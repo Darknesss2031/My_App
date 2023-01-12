@@ -140,7 +140,6 @@ class TractorPageActivity : AppCompatActivity() {
             GlobalList.tractorList[curTractor.id].isBought = true
             GlobalList.tractorList[curTractor.id].buyCount = amount.toInt()
             turnButtonsOff()
-            binding.butReserve.text = "Товар в корзине"
         }
         dialog.setNegativeButton("Отмена"){ _, i -> }
         dialog.show()

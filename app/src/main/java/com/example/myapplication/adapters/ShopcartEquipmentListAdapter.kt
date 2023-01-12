@@ -9,31 +9,25 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.example.myapplication.Constance
+import com.example.myapplication.EquipmentPageActivity
 import com.example.myapplication.GlobalList
 import com.example.myapplication.R
-import com.example.myapplication.TractorPageActivity
-import com.example.myapplication.classes.Tractor
-import com.example.myapplication.databinding.SimpleShopcartItemBinding
+import com.example.myapplication.classes.Equipment
+import com.example.myapplication.databinding.SimpleShopcartEquipmentItemBinding
 import com.example.myapplication.fragments.ShopcartFragment
 import com.squareup.picasso.Picasso
 
-class ShopcartListAdapter: RecyclerView.Adapter<ShopcartListAdapter.ShopcartHolder>(){
-    private var tractorList = arrayListOf<Tractor>()
+class ShopcartEquipmentListAdapter: RecyclerView.Adapter<ShopcartEquipmentListAdapter.ShopcartEquipmentHolder>(){
+    private var equipmentList = arrayListOf<Equipment>()
     lateinit var context: Context
-    private var costSumm = 0
 
-    class ShopcartHolder(item: View): RecyclerView.ViewHolder(item) {
-        val binding = SimpleShopcartItemBinding.bind(item)
-        fun bind (tractor: Tractor) = with(binding){
-            Picasso.with(itemView.context).load(tractor.imageURLList.first()).into(tractorImageView)
-            val trName = tractor.creatorCorpName + "\n" + tractor.model
-            textTrName.text = trName
-            val tractorBuildCost = "+ " + rubbles(tractor.priceList.last())
-            textTrCost.text = rubbles(tractor.priceList.first())
-            buildCostView.text = tractorBuildCost
-            editTextAmount.setText(tractor.buyCount.toString())
-            boxIncludeBuild.isChecked = tractor.isBuild
+    class ShopcartEquipmentHolder(item: View): RecyclerView.ViewHolder(item) {
+        val binding = SimpleShopcartEquipmentItemBinding.bind(item)
+        fun bind (eq: Equipment) = with(binding){
+            Picasso.with(itemView.context).load(eq.imageURLList.first()).into(eqImageView)
+            textEqName.text = eq.name
+            textEqCost.text = rubbles(eq.priceList.first())
+            editTextAmount.setText(eq.buyCount.toString())
         }
         private fun rubbles(num: Int): String {
             var total = ""
@@ -49,36 +43,38 @@ class ShopcartListAdapter: RecyclerView.Adapter<ShopcartListAdapter.ShopcartHold
 
     }
 
-    fun setTractorList(list: ArrayList<Tractor>) {
-        for (curTractor in list) {
-            if (curTractor.isBought) {
-                tractorList.add(curTractor)
+    fun setTractorList(list: ArrayList<ArrayList<Equipment>>) {
+        for (type in list) {
+            for (curEq in type) {
+                if (curEq.isBought) {
+                    equipmentList.add(curEq)
+                }
             }
         }
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ShopcartHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.simple_shopcart_item, parent, false)
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ShopcartEquipmentHolder {
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.simple_shopcart_equipment_item, parent, false)
         context = parent.context
-        return ShopcartHolder(view)
+        return ShopcartEquipmentHolder(view)
     }
 
-    override fun onBindViewHolder(holder: ShopcartHolder, position: Int) {
-        holder.bind(tractorList[position])
+    override fun onBindViewHolder(holder: ShopcartEquipmentHolder, position: Int) {
+        holder.bind(equipmentList[position])
         holder.binding.viewOpen.setOnClickListener {
-            onClickItem(tractorList[position])
+            onClickItem(equipmentList[position])
         }
         holder.binding.butInc.setOnClickListener {
             var displayedString = clearString(holder.binding.editTextAmount.text.toString())
             if (displayedString == "") {
                 holder.binding.editTextAmount.setText("1")
-                //GlobalList.tractorList[tractorList[position].id].buyCount = 1
-                tractorList[position].buyCount = 1
+                GlobalList.extraList[equipmentList[position].type][equipmentList[position].id].buyCount = 1
+                equipmentList[position].buyCount = 1
             } else {
                 displayedString = (displayedString.toInt() + 1).toString()
                 holder.binding.editTextAmount.setText(displayedString)
-                //GlobalList.tractorList[tractorList[position].id].buyCount = displayedString.toInt()
-                tractorList[position].buyCount = displayedString.toInt()
+                GlobalList.extraList[equipmentList[position].type][equipmentList[position].id].buyCount = displayedString.toInt()
+                equipmentList[position].buyCount = displayedString.toInt()
             }
             ShopcartFragment.refreshCostAmount()
         }
@@ -86,19 +82,21 @@ class ShopcartListAdapter: RecyclerView.Adapter<ShopcartListAdapter.ShopcartHold
             var displayedString = clearString(holder.binding.editTextAmount.text.toString())
             if (displayedString == "") {
                 holder.binding.editTextAmount.setText("1")
-                GlobalList.tractorList[tractorList[position].id].buyCount = 1
-                tractorList[position].buyCount = 1
+                GlobalList.extraList[equipmentList[position].type][equipmentList[position].id].buyCount = 1
+                equipmentList[position].buyCount = 1
             } else if (displayedString == "1" || displayedString == "0") {
                 val dialog = AlertDialog.Builder(this.context)
                 dialog.setTitle("Подтверждение")
-                val displayedText = "Вы уверены, что хотите убрать данный трактор из корзины?"
+                val displayedText = "Вы уверены, что хотите убрать данное оборудование из корзины?"
                 dialog.setMessage(displayedText)
                 dialog.setPositiveButton("Да"){
-                    _, _ ->
+                        _, _ ->
                     run {
-                        GlobalList.tractorList[tractorList[position].id].isBought = false
-                        tractorList.removeAt(position)
+                        GlobalList.extraList[equipmentList[position].type][equipmentList[position].id].isBought = false
+                        equipmentList[position].isBought = false
+                        equipmentList[position].buyCount = 1
                         ShopcartFragment.refreshCostAmount()
+                        equipmentList.removeAt(position)
                         notifyItemRemoved(position)
                     }
                 }
@@ -107,24 +105,21 @@ class ShopcartListAdapter: RecyclerView.Adapter<ShopcartListAdapter.ShopcartHold
             } else {
                 displayedString = (displayedString.toInt() - 1).toString()
                 holder.binding.editTextAmount.setText(displayedString)
-                GlobalList.tractorList[tractorList[position].id].buyCount = displayedString.toInt()
-                tractorList[position].buyCount = displayedString.toInt()
+                GlobalList.extraList[equipmentList[position].type][equipmentList[position].id].buyCount = displayedString.toInt()
+                equipmentList[position].buyCount = displayedString.toInt()
             }
-            ShopcartFragment.refreshCostAmount()
-        }
-        holder.binding.boxIncludeBuild.setOnCheckedChangeListener { buttonView, isChecked ->
-            tractorList[position].isBuild = isChecked
             ShopcartFragment.refreshCostAmount()
         }
     }
 
     override fun getItemCount(): Int {
-        return tractorList.size
+        return equipmentList.size
     }
 
-    private fun onClickItem(item: Tractor) {
-        val intent = Intent(this.context, TractorPageActivity::class.java)
-        intent.putExtra("trId", item.id)
+    private fun onClickItem(item: Equipment) {
+        val intent = Intent(this.context, EquipmentPageActivity::class.java)
+        intent.putExtra("eqId", item.id)
+        intent.putExtra("eqType", item.type)
         context.startActivity(intent)
     }
 
@@ -137,5 +132,4 @@ class ShopcartListAdapter: RecyclerView.Adapter<ShopcartListAdapter.ShopcartHold
         }
         return out
     }
-
 }

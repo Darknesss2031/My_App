@@ -11,6 +11,7 @@ data class Tractor(var id: Int) {
     var videoUrl = ""
     var isBought = false
     var buyCount = 1
+    var isBuild = false
     var spec = arrayListOf<ArrayList<String>>(
         ArrayList(6),
         ArrayList(10),

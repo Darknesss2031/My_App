@@ -103,6 +103,17 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textSNP" />
 
+            <TextView
+                android:id="@+id/textCorpName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:text="TextView"
+                android:textSize="20sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textPhone" />
+
             <Button
                 android:id="@+id/butReset"
                 android:layout_width="wrap_content"
@@ -110,7 +121,7 @@
                 android:layout_marginTop="10dp"
                 android:text="@string/reset"
                 app:layout_constraintStart_toStartOf="@+id/textPhone"
-                app:layout_constraintTop_toBottomOf="@+id/textPhone" />
+                app:layout_constraintTop_toBottomOf="@+id/textCorpName" />
 
             <ImageView
                 android:id="@+id/imageView"

@@ -26,15 +26,17 @@ class GetUserDataActivity : AppCompatActivity() {
 
     fun onClickDone(view: View) {
         binding.apply {
-            if (checkField(fieldName) && checkField(fieldSurname) && checkField(fieldPatronymic) && checkField(fieldPhone)) {
+            if (checkField(fieldName) && checkField(fieldSurname) && checkField(fieldPatronymic) && checkField(fieldPhone) && checkField(fieldCorpName)) {
                 val storageEditor = UserDataStorage?.edit()
 
                 UserData.name = fieldSurname.text.toString() + " " +
                         fieldName.text.toString() + " " +
                         fieldPatronymic.text.toString()
                 UserData.phoneNumber = fieldPhone.text.toString()
+                UserData.corpName = fieldCorpName.text.toString()
                 storageEditor?.putString("name", UserData.name)
                 storageEditor?.putString("phone", UserData.phoneNumber)
+                storageEditor?.putString("corpName", UserData.corpName)
                 storageEditor?.apply()
                 finish()
             } else {
